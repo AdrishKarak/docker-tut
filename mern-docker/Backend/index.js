@@ -46,7 +46,7 @@ app.post("/api/anime", async (req, res) => {
     }
 });
 
-/* -------------------- SERVER START -------------------- */
+/* -------------------- SERVER START -------------------- -*/
 
 async function startServer() {
     // Start DB connection (it retries internally)
