@@ -90,3 +90,5 @@ EXPOSE 5173
 CMD ["npm", "run", "dev"]
 
 #command to run the docker file after build: docker run -p 5173:5173 -v "$(pwd):/app" react-docker
+#command to create tag-pull : docker tag react-docker adrishkarak/react-docker
+#command to push : docker push adrishkarak/react-docker
