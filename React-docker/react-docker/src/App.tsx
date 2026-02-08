@@ -19,11 +19,9 @@ function App() {
       <h1>Hello Docker!</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count Docker is <h2>{count}</h2> Containers
+          count Docker is <h2>{count}</h2> Containers...
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
