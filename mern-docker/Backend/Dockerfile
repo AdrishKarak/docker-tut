@@ -80,14 +80,14 @@ USER app
 # ================================
 # Vite dev server runs on port 5173.
 # EXPOSE documents the port; it does NOT publish it automatically.
-EXPOSE 5173
+EXPOSE 8000
 
 
 # ================================
 # 🔟 Default Container Command
 # ================================
 # Starts Vite development server with hot reload.
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
 
 #command to run the docker file after build: docker run -p 5173:5173 -v "$(pwd):/app" react-docker
 #command to create tag-pull : docker tag react-docker adrishkarak/react-docker

@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  web:
+    depends_on:
+      - api
+    build: ./Frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:8000
+    develop:
+      watch:
+        - path: ./Frontend/package.json
+          action: rebuild
+        - path: ./Frontend/package-lock.json
+          action: rebuild
+        - path: ./Frontend
+          target: /app
+          action: sync
+
+  api:
+    depends_on:
+      db:
+        condition: service_healthy
+    build: ./Backend
+    ports:
+      - "8000:8000"
+    environment:
+      DB_URL: mongodb://db:27017/anime
+    develop:
+      watch:
+        - path: ./Backend/package.json
+          action: rebuild
+        - path: ./Backend/package-lock.json
+          action: rebuild
+        - path: ./Backend
+          target: /app
+          action: sync
+
+  db:
+    image: mongo:latest
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "27017:27017"
+    volumes:
+      - anime:/data/db
+
+volumes:
+  anime:
